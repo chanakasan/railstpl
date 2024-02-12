@@ -1,14 +1,31 @@
 #!/usr/bin/env bash
 
 main() {
-  local base_path=$HOME/railstpl
+  local base_path=$HOME/railstpl/src
   local tpl="$1"
-  local path1=$base_path/$tpl
-  if [ -f $path1 ]; then
-    rails_command "app:template LOCATION=$path1"
+  local path1=$base_path/$tpl.rb
+  local is_rails=$(is_rails_dir)
+  if [ "$is_rails" != "true" ]; then
+    echo " error: must be inside a rails dir"
+    exit 1
+  fi
+
+  if [ -z $tpl ]; then
+    echo " usage: railstpl <tpl>"
+  elif [ -f $path1 ]; then
+    rails app:template LOCATION=$path1
   else
     echo " not found: $path1"
   fi
 }
 
-main
+is_rails_dir() {
+  local file="$PWD/app/controllers/application_controller.rb"
+  if [ -f $file ]; then
+    echo true
+  else
+    echo false
+  fi
+}
+
+main "$@"
