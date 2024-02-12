@@ -1,6 +1,6 @@
-# railstpl CLI tool
+# railstpl CLI
 
-**Install**
+**Usage**
 
 ```
 # clone
