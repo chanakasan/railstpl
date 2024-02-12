@@ -12,6 +12,8 @@ main() {
 
   if [ -z $tpl ]; then
     echo " usage: railstpl <tpl>"
+  elif [ "$tpl" == "list" ];
+    list_scripts
   elif [ -f $path1 ]; then
     rails app:template LOCATION=$path1
   else
@@ -26,6 +28,10 @@ is_rails_dir() {
   else
     echo false
   fi
+}
+
+list_scripts() {
+  ll $base_path
 }
 
 main "$@"
