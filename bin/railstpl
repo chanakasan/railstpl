@@ -1,1 +1,7 @@
-echo " Hello rails tpl !"
+#!/usr/bin/env bash
+
+main() {
+  echo " Hello rails tpl !"
+}
+
+main
