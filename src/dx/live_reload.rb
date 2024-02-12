@@ -1,5 +1,3 @@
-# Enable livereload
-#
 gem_group :development do
   gem "rails_live_reload"
 end

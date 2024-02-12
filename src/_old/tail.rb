@@ -97,7 +97,6 @@ end
 insert_into_file "app/views/layouts/application.html.erb", before: "<%= yield %>\n" do
   str = <<STR
   <h1 class="text-4xl font-bold mb-2 underline">Hello!</h1>
-  
 STR
   str
 end
