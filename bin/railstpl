@@ -1,7 +1,14 @@
 #!/usr/bin/env bash
 
 main() {
-  echo " Hello rails tpl !"
+  local base_path=$HOME/railstpl
+  local tpl="$1"
+  local path1=$base_path/$tpl
+  if [ -f $path1 ]; then
+    rails_command "app:template LOCATION=$path1"
+  else
+    echo " not found: $path1"
+  fi
 }
 
 main
