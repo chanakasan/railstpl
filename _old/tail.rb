@@ -1,9 +1,5 @@
-# Install tailwind
-#
+# script: tailwind
 
-#""""""""""""""""""""""""""""""""""""""""""""""""""""
-# create files
-#""""""""""""""""""""""""""""""""""""""""""""""""""""
 file "tailwind.config.js", <<-STR
 const defaultTheme = require('tailwindcss/defaultTheme')
 
