@@ -32,6 +32,9 @@ is_rails_dir() {
 
 list_scripts() {
   tree --noreport $base_path
+  # for f in $(ls $base_path/**/*.rb); do
+  #   echo $f
+  # done
 }
 
 main "$@"
