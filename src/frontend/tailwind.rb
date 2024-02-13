@@ -1,6 +1,7 @@
 # script: tailwind
 source_paths << File.expand_path(__dir__)
 
+run "mkdir app/assets/compiled"
 copy_file "tailwind/tailwind.config.js", "tailwind.config.js"
 copy_file "tailwind/application_tailwind.css", "app/assets/stylesheets/application_tailwind.css"
 copy_file "tailwind/dev.sh", "bin/dev"
@@ -8,7 +9,7 @@ copy_file "tailwind/Procfile.local", "Procfile.local"
 
 insert_into_file "app/assets/config/manifest.js" do
   str = <<STR
-//= link_tree ../builds
+//= link_tree ../compiled
 STR
   str
 end
@@ -17,8 +18,8 @@ insert_into_file ".gitignore" do
   str = <<STR
 
 # for tailwind
-/app/assets/builds/*
-!/app/assets/builds/.keep
+/app/assets/compiled/*
+!/app/assets/compiled/.keep
 STR
   str
 end
