@@ -1,26 +1,46 @@
+# script: tailwind
+source_paths << File.expand_path(__dir__)
+
+copy_file "tailwind/tailwind.config.js", "tailwind.config.js"
+copy_file "tailwind/application_tailwind.css", "app/assets/stylesheets/application_tailwind.css"
+copy_file "tailwind/dev.sh", "bin/dev"
+copy_file "tailwind/Procfile.local", "Procfile.local"
+
+insert_into_file "app/assets/config/manifest.js" do
+  str = <<STR
+//= link_tree ../builds
+STR
+  str
+end
+
+insert_into_file ".gitignore" do
+  str = <<STR
+
+# for tailwind
+/app/assets/builds/*
+!/app/assets/builds/.keep
+STR
+  str
+end
+
+insert_into_file "app/views/layouts/application.html.erb", after: "<%= csp_meta_tag %>\n" do
+  str = <<STR
+
+    <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
+STR
+  str
+end
+
+insert_into_file "app/views/layouts/application.html.erb", before: "<%= yield %>\n" do
+  str = <<STR
+  <h1 class="text-4xl font-bold mb-2 underline">Hello Tailwind !</h1>
+STR
+  str
+end
+
+
+run "chmod +x bin/*"
 run "yarn add tailwindcss"
-run "mkdir app/javascript/css"
-run "touch app/javascript/css/application.scss"
 
-inject_into_file 'app/javascript/css/application.scss' do <<~EOF
-  @import "tailwindcss/base";
-  @import "tailwindcss/components";
-  @import "tailwindcss/utilities";
-  EOF
-end
-
-inject_into_file 'app/javascript/packs/application.js' do <<~EOF
-  require("css/application.scss")
-  EOF
-end
-
-inject_into_file 'postcss.config.js', before: "require('postcss-import')" do <<~EOF
-  require('tailwindcss'),
-  require('autoprefixer'),
-  EOF
-end
-
-inject_into_file 'app/views/layouts/application.html.erb', before: '</head>' do <<~EOF
-  <%= stylesheet_pack_tag 'stylesheets', media: 'all', 'data-turbolinks-track': 'reload' %>
-  EOF
-end
+git add: "."
+git commit: %Q{-m "install tailwindcss"}

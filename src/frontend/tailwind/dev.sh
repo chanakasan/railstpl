@@ -1,0 +1,1 @@
+overmind s -f Procfile.local
