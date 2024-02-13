@@ -1,6 +1,8 @@
 generate(:controller, "pages", "home")
 
-inject_into_file "config/routes.rb", "root \"pages#home\"\n", :before => /^end/
+inject_into_file "config/routes.rb", before: /^end/ do
+  %Q{  root "pages#home"\n}
+end
 
 git add: "."
-git commit: "-m 'add home page'"
+git commit: %Q{ -m "script: add home page" }
