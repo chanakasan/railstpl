@@ -11,5 +11,5 @@ after_bundle do
     rails_command "db:migrate"
   end
 
-  git add: ".", commit: %(-m 'Initial commit')
+  git add: ".", commit: %(-m 'rails_tpl: commit')
 end

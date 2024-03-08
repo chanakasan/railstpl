@@ -5,4 +5,4 @@ inject_into_file "config/routes.rb", before: /^end/ do
 end
 
 git add: "."
-git commit: %Q{ -m "script: add home page" }
+git commit: %Q{ -m "script: home.rb" }
