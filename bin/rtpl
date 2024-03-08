@@ -3,7 +3,9 @@
 main() {
   local base_path=$HOME/railstpl/src
   local a1="$1"
-  local path1=$base_path/$a1/main.rb
+  local a2="$2"
+  local tpl=$a1/$a2/main.rb
+  local path1=$base_path/$tpl
   local is_rails=$(is_rails_dir)
   if [ "$is_rails" != "true" ]; then
     echo " error: must be inside a rails dir"
@@ -17,7 +19,7 @@ main() {
   elif [ -f $path1 ]; then
     rails app:template LOCATION=$path1
   else
-    echo " tpl not found: $a1/main.rb"
+    echo " tpl not found: $tpl"
   fi
 }
 

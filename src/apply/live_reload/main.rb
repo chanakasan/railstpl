@@ -5,4 +5,4 @@ end
 run "bundle install"
 
 git add: "Gemfile*"
-git commit: "-m 'enable livereload'"
+git commit: %Q{ -m "script: live_reload" }

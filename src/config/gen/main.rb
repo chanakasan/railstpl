@@ -1,5 +1,3 @@
-# Disable some generators
-#
 inject_into_class "config/application.rb", "Application" do
   str = <<STR
     config.generators do |g|
@@ -17,4 +15,4 @@ STR
 end
 
 git add: "config/application.rb*"
-git commit: "-m 'disable generators'"
+git commit: %Q{ -m "script: configure generators" }

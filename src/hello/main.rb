@@ -1,1 +1,0 @@
-run %Q{ echo " Hello rails tpl !" }
