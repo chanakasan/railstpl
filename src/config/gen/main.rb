@@ -1,5 +1,6 @@
-inject_into_class "config/application.rb", "Application" do
-  str = <<STR
+require "rtpl_support"
+
+insert_in_file_after_line "config/application.rb", "Application" do %Q{
     config.generators do |g|
       g.scaffold_stylesheet false
       g.test_framework "none", :fixture => false
@@ -10,9 +11,8 @@ inject_into_class "config/application.rb", "Application" do
       g.skip_routes true
     end
 
-STR
-  str
+}
 end
 
-git add: "config/application.rb*"
-git commit: %Q{ -m "script: configure generators" }
+add_to_commit "config/application.rb*"
+commit_changes "script: configure generators"

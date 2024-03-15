@@ -1,1 +1,3 @@
-say " Hello rails tpl !"
+require "rtpl_support"
+
+print_line " Hello rails tpl !"
