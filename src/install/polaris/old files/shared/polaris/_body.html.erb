@@ -1,0 +1,23 @@
+<%= polaris_frame(
+  logo: {
+    url: "#",
+    src: "/favicon-32x32.png",
+    width: "32px"
+  }
+) do |frame| %>
+  <%= render partial: "shared/polaris/topbar", locals: { frame: frame } %>
+  <%= render partial: "shared/polaris/sidebar", locals: { frame: frame } %>
+  <%= turbo_frame_tag "modal" %>
+  <% if converted_to_polaris?(controller_name) %>
+    <div data-testid="main_content">
+      <%= content_for?(:content) ? yield(:content) : yield %>
+    </div>
+    <%= render partial: "shared/footer" %>
+  <% else %>
+    <%= polaris_card do %>
+      <%= render partial: "shared/main_content" %>
+      <%= render partial: "shared/footer" %>
+    <% end %>
+  <% end %>
+  <%= render partial: "shared/polaris/toast", locals: { frame: frame } %>
+<% end %>

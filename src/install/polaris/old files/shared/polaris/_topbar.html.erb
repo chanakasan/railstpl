@@ -1,0 +1,13 @@
+<% frame.with_top_bar(data: { testid: "topbar" }) do |top_bar| %>
+  <% if anyone_signed_in? %>
+    <% top_bar.with_user_menu(name: current_devise_user.email, detail: current_tenant_name) do |user_menu| %>
+      <% user_menu.with_avatar(initials: "U") %>
+        <%= polaris_action_list do |action_list| %>
+          <% if current_devise_user.is_a?(User) %>
+            <% action_list.with_item(icon: "ProfileMinor", url: edit_profile_path(current_user)) { "Profile" } %>
+          <% end %>
+          <% action_list.with_item(icon: "LogOutMinor", url: custom_logout_path) { "Log out" } %>
+        <% end %>
+      <% end %>
+  <% end %>
+<% end %>

@@ -1,0 +1,9 @@
+<% frame.with_navigation do |navigation| %>
+  <% if current_person.present? %>
+    <%= render partial: "shared/polaris/sidebar/person", locals: { navigation: navigation } %>
+  <% elsif super_admin_signed_in? %>
+    <%= render partial: "shared/polaris/sidebar/super_admin", locals: { navigation: navigation } %>
+  <% else %>
+    <%= render partial: "shared/polaris/sidebar/no_auth", locals: { navigation: navigation } %>
+  <% end %>
+<% end %>

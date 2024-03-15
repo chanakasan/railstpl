@@ -1,0 +1,8 @@
+<% frame.with_navigation do |navigation| %>
+  <% logged_in = true %>
+  <% if logged_in %>
+    <%= render partial: "shared/polaris/sidebar/auth", locals: { navigation: navigation } %>
+  <% else %>
+    <%= render partial: "shared/polaris/sidebar/no_auth", locals: { navigation: navigation } %>
+  <% end %>
+<% end %>

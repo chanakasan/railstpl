@@ -1,0 +1,13 @@
+<%= polaris_frame(
+  logo: {
+    url: "#",
+    src: "https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-color.svg",
+  }
+) do |frame| %>
+  <%= render partial: "shared/polaris/topbar", locals: { frame: frame } %>
+  <%= render partial: "shared/polaris/sidebar", locals: { frame: frame } %>
+  <div data-testid="main_content">
+    <%= yield %>
+  </div>
+  <%= render partial: "shared/polaris/toast", locals: { frame: frame } %>
+<% end %>

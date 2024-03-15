@@ -1,0 +1,21 @@
+<% navigation.with_section(data: { testid: "sidebar" }) do |section| %>
+  <% section.with_item(
+    url: root_path,
+    label: "Home",
+    icon: "HomeMajor",
+    selected: true,
+  ) %>
+
+  <% navigation.with_section(separator: true) do |section| %>
+    <% section.with_item(
+      url: "#",
+      label: "Settings",
+      icon: "SettingsMinor",
+    ) %>
+    <% section.with_item(
+      url: "#",
+      label: "Sign Out",
+      icon: "ExitMajor"
+    ) %>
+  <% end %> 
+<% end %>

@@ -1,0 +1,19 @@
+<% navigation.with_section(data: { testid: "sidebar" }) do |section| %>
+  <% section.with_item(
+    url: root_path,
+    label: "Home",
+    icon: "HomeMajor",
+    selected: true,
+  ) %>
+  <% section.with_item(
+    url: new_user_session_path,
+    label: "Sign in",
+    icon: "EnterMajor",
+  ) %>
+  <% section.with_item(
+    url: new_user_registration_path,
+    label: "Sign Up",
+    icon: "MagicMajor",
+  ) %>
+
+<% end %>

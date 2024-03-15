@@ -1,0 +1,7 @@
+<% frame.with_toasts(data: { testid: "toast_messages" }) do %>
+  <div class="" data-testid="toast_messages">
+    <% flash.each do |type, message| %>
+      <%= polaris_toast(id: "flash_toast_", error: type.to_s == "alert") { message } %>
+    <% end %>
+  </div>
+<% end %>

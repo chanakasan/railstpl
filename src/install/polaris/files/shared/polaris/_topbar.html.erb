@@ -1,0 +1,12 @@
+<% frame.with_top_bar(data: { testid: "topbar" }) do |top_bar| %>
+  <% logged_in = true %>
+  <% if logged_in %>
+    <% top_bar.with_user_menu(name: "user@gmail.com", detail: "Test Company") do |user_menu| %>
+      <% user_menu.with_avatar(initials: "U") %>
+        <%= polaris_action_list do |action_list| %>
+          <% action_list.with_item(icon: "ProfileMinor", url: "@") { "Profile" } %>
+          <% action_list.with_item(icon: "LogOutMinor", url: "#") { "Log out" } %>
+        <% end %>
+      <% end %>
+  <% end %>
+<% end %>
